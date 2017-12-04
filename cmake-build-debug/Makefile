@@ -123,32 +123,32 @@ OOP_Matrix_2017Fall/fast:
 	$(MAKE) -f CMakeFiles/OOP_Matrix_2017Fall.dir/build.make CMakeFiles/OOP_Matrix_2017Fall.dir/build
 .PHONY : OOP_Matrix_2017Fall/fast
 
-main.o: main.cpp.o
+BasicTest.o: BasicTest.cpp.o
 
-.PHONY : main.o
+.PHONY : BasicTest.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/OOP_Matrix_2017Fall.dir/build.make CMakeFiles/OOP_Matrix_2017Fall.dir/main.cpp.o
-.PHONY : main.cpp.o
+BasicTest.cpp.o:
+	$(MAKE) -f CMakeFiles/OOP_Matrix_2017Fall.dir/build.make CMakeFiles/OOP_Matrix_2017Fall.dir/BasicTest.cpp.o
+.PHONY : BasicTest.cpp.o
 
-main.i: main.cpp.i
+BasicTest.i: BasicTest.cpp.i
 
-.PHONY : main.i
+.PHONY : BasicTest.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/OOP_Matrix_2017Fall.dir/build.make CMakeFiles/OOP_Matrix_2017Fall.dir/main.cpp.i
-.PHONY : main.cpp.i
+BasicTest.cpp.i:
+	$(MAKE) -f CMakeFiles/OOP_Matrix_2017Fall.dir/build.make CMakeFiles/OOP_Matrix_2017Fall.dir/BasicTest.cpp.i
+.PHONY : BasicTest.cpp.i
 
-main.s: main.cpp.s
+BasicTest.s: BasicTest.cpp.s
 
-.PHONY : main.s
+.PHONY : BasicTest.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/OOP_Matrix_2017Fall.dir/build.make CMakeFiles/OOP_Matrix_2017Fall.dir/main.cpp.s
-.PHONY : main.cpp.s
+BasicTest.cpp.s:
+	$(MAKE) -f CMakeFiles/OOP_Matrix_2017Fall.dir/build.make CMakeFiles/OOP_Matrix_2017Fall.dir/BasicTest.cpp.s
+.PHONY : BasicTest.cpp.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... OOP_Matrix_2017Fall"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... BasicTest.o"
+	@echo "... BasicTest.i"
+	@echo "... BasicTest.s"
 .PHONY : help
 
 

@@ -57,38 +57,38 @@ include CMakeFiles/OOP_Matrix_2017Fall.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/OOP_Matrix_2017Fall.dir/flags.make
 
-CMakeFiles/OOP_Matrix_2017Fall.dir/main.cpp.o: CMakeFiles/OOP_Matrix_2017Fall.dir/flags.make
-CMakeFiles/OOP_Matrix_2017Fall.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/peterzheng/GitHubProjects/OOP_Matrix_2017Fall/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/OOP_Matrix_2017Fall.dir/main.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/OOP_Matrix_2017Fall.dir/main.cpp.o -c /Users/peterzheng/GitHubProjects/OOP_Matrix_2017Fall/main.cpp
+CMakeFiles/OOP_Matrix_2017Fall.dir/BasicTest.cpp.o: CMakeFiles/OOP_Matrix_2017Fall.dir/flags.make
+CMakeFiles/OOP_Matrix_2017Fall.dir/BasicTest.cpp.o: ../BasicTest.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/peterzheng/GitHubProjects/OOP_Matrix_2017Fall/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/OOP_Matrix_2017Fall.dir/BasicTest.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/OOP_Matrix_2017Fall.dir/BasicTest.cpp.o -c /Users/peterzheng/GitHubProjects/OOP_Matrix_2017Fall/BasicTest.cpp
 
-CMakeFiles/OOP_Matrix_2017Fall.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OOP_Matrix_2017Fall.dir/main.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/peterzheng/GitHubProjects/OOP_Matrix_2017Fall/main.cpp > CMakeFiles/OOP_Matrix_2017Fall.dir/main.cpp.i
+CMakeFiles/OOP_Matrix_2017Fall.dir/BasicTest.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OOP_Matrix_2017Fall.dir/BasicTest.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/peterzheng/GitHubProjects/OOP_Matrix_2017Fall/BasicTest.cpp > CMakeFiles/OOP_Matrix_2017Fall.dir/BasicTest.cpp.i
 
-CMakeFiles/OOP_Matrix_2017Fall.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OOP_Matrix_2017Fall.dir/main.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/peterzheng/GitHubProjects/OOP_Matrix_2017Fall/main.cpp -o CMakeFiles/OOP_Matrix_2017Fall.dir/main.cpp.s
+CMakeFiles/OOP_Matrix_2017Fall.dir/BasicTest.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OOP_Matrix_2017Fall.dir/BasicTest.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/peterzheng/GitHubProjects/OOP_Matrix_2017Fall/BasicTest.cpp -o CMakeFiles/OOP_Matrix_2017Fall.dir/BasicTest.cpp.s
 
-CMakeFiles/OOP_Matrix_2017Fall.dir/main.cpp.o.requires:
+CMakeFiles/OOP_Matrix_2017Fall.dir/BasicTest.cpp.o.requires:
 
-.PHONY : CMakeFiles/OOP_Matrix_2017Fall.dir/main.cpp.o.requires
+.PHONY : CMakeFiles/OOP_Matrix_2017Fall.dir/BasicTest.cpp.o.requires
 
-CMakeFiles/OOP_Matrix_2017Fall.dir/main.cpp.o.provides: CMakeFiles/OOP_Matrix_2017Fall.dir/main.cpp.o.requires
-	$(MAKE) -f CMakeFiles/OOP_Matrix_2017Fall.dir/build.make CMakeFiles/OOP_Matrix_2017Fall.dir/main.cpp.o.provides.build
-.PHONY : CMakeFiles/OOP_Matrix_2017Fall.dir/main.cpp.o.provides
+CMakeFiles/OOP_Matrix_2017Fall.dir/BasicTest.cpp.o.provides: CMakeFiles/OOP_Matrix_2017Fall.dir/BasicTest.cpp.o.requires
+	$(MAKE) -f CMakeFiles/OOP_Matrix_2017Fall.dir/build.make CMakeFiles/OOP_Matrix_2017Fall.dir/BasicTest.cpp.o.provides.build
+.PHONY : CMakeFiles/OOP_Matrix_2017Fall.dir/BasicTest.cpp.o.provides
 
-CMakeFiles/OOP_Matrix_2017Fall.dir/main.cpp.o.provides.build: CMakeFiles/OOP_Matrix_2017Fall.dir/main.cpp.o
+CMakeFiles/OOP_Matrix_2017Fall.dir/BasicTest.cpp.o.provides.build: CMakeFiles/OOP_Matrix_2017Fall.dir/BasicTest.cpp.o
 
 
 # Object files for target OOP_Matrix_2017Fall
 OOP_Matrix_2017Fall_OBJECTS = \
-"CMakeFiles/OOP_Matrix_2017Fall.dir/main.cpp.o"
+"CMakeFiles/OOP_Matrix_2017Fall.dir/BasicTest.cpp.o"
 
 # External object files for target OOP_Matrix_2017Fall
 OOP_Matrix_2017Fall_EXTERNAL_OBJECTS =
 
-OOP_Matrix_2017Fall: CMakeFiles/OOP_Matrix_2017Fall.dir/main.cpp.o
+OOP_Matrix_2017Fall: CMakeFiles/OOP_Matrix_2017Fall.dir/BasicTest.cpp.o
 OOP_Matrix_2017Fall: CMakeFiles/OOP_Matrix_2017Fall.dir/build.make
 OOP_Matrix_2017Fall: CMakeFiles/OOP_Matrix_2017Fall.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/peterzheng/GitHubProjects/OOP_Matrix_2017Fall/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable OOP_Matrix_2017Fall"
@@ -99,7 +99,7 @@ CMakeFiles/OOP_Matrix_2017Fall.dir/build: OOP_Matrix_2017Fall
 
 .PHONY : CMakeFiles/OOP_Matrix_2017Fall.dir/build
 
-CMakeFiles/OOP_Matrix_2017Fall.dir/requires: CMakeFiles/OOP_Matrix_2017Fall.dir/main.cpp.o.requires
+CMakeFiles/OOP_Matrix_2017Fall.dir/requires: CMakeFiles/OOP_Matrix_2017Fall.dir/BasicTest.cpp.o.requires
 
 .PHONY : CMakeFiles/OOP_Matrix_2017Fall.dir/requires
 

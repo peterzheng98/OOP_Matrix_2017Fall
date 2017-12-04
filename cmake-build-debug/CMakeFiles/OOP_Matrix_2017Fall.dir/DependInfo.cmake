@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/peterzheng/GitHubProjects/OOP_Matrix_2017Fall/main.cpp" "/Users/peterzheng/GitHubProjects/OOP_Matrix_2017Fall/cmake-build-debug/CMakeFiles/OOP_Matrix_2017Fall.dir/main.cpp.o"
+  "/Users/peterzheng/GitHubProjects/OOP_Matrix_2017Fall/BasicTest.cpp" "/Users/peterzheng/GitHubProjects/OOP_Matrix_2017Fall/cmake-build-debug/CMakeFiles/OOP_Matrix_2017Fall.dir/BasicTest.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
