@@ -541,12 +541,16 @@ namespace sjtu {
 namespace sjtu {
     template<class V, class U>
     auto operator*(const Matrix<V> &mat, const U &x) {
+        size_t ___row = mat.rowLength(), ___col = mat.columnLength();
         std::vector<std::vector<decltype(V() * U())> > __matrix;
-        for (int i = 0; i < mat.rowLength(); i++) {
-            std::vector<decltype(U() * V())> p;
-            for (int j = 0; j < mat.columnLength(); j++)
-                p.push_back(mat._matrix[i][j] * x);
-            __matrix.push_back(p);
+
+        __matrix.resize(___row);
+        for (size_t i = 0; i < ___row; i++) {
+//            std::vector<decltype(U() * V())> p;
+            __matrix[i].resize(___col);
+            for (size_t j = 0; j < ___col; j++)
+                __matrix[i][j] = mat._matrix[i][j] * x;
+//            __matrix.push_back(p);
         }
         Matrix<decltype(V() * U())> ans(__matrix, mat.rowLength(), mat.columnLength());
         return ans;
@@ -564,15 +568,29 @@ namespace sjtu {
 
     template<class U, class V>
     auto operator*(const U &x, const Matrix<V> &mat) {
+
         std::vector<std::vector<decltype(U() * V())> > __matrix;
-        for (int i = 0; i < mat.rowLength(); i++) {
-            std::vector<decltype(U() * V())> p;
-            for (int j = 0; j < mat.columnLength(); j++)
-                p.push_back(mat._matrix[i][j] * x);
-            __matrix.push_back(p);
+        size_t ___row = mat.rowLength(), ___col = mat.columnLength();
+        __matrix.resize(___row);
+        for (size_t i = 0; i < ___row; i++) {
+//            std::vector<decltype(U() * V())> p;
+            __matrix[i].resize(___col);
+            for (size_t j = 0; j < ___col; j++)
+                __matrix[i][j] = x * mat._matrix[i][j];
+//            __matrix.push_back(p);
         }
-        Matrix<decltype(U() * V())> ans(__matrix, mat.rowLength(), mat.columnLength());
+        Matrix<decltype(V() * U())> ans(__matrix, mat.rowLength(), mat.columnLength());
         return ans;
+
+//        std::vector<std::vector<decltype(U() * V())> > __matrix;
+//        for (int i = 0; i < mat.rowLength(); i++) {
+//            std::vector<decltype(U() * V())> p;
+//            for (int j = 0; j < mat.columnLength(); j++)
+//                p.push_back(mat._matrix[i][j] * x);
+//            __matrix.push_back(p);
+//        }
+//        Matrix<decltype(U() * V())> ans(__matrix, mat.rowLength(), mat.columnLength());
+//        return ans;
 
 
     }
