@@ -16,20 +16,20 @@ namespace sjtu {
 
     template<class T>
     class Matrix {
-        template<class V, class U>
-        friend auto operator*(const Matrix<V> &, const U &);
-
-        template<class U, class V>
-        friend auto operator*(const U &, const Matrix<V> &);
-
-        template<class U, class V>
-        friend auto operator*(const Matrix<U> &, const Matrix<V> &);
-
-        template<class U, class V>
-        friend auto operator+(const Matrix<U> &, const Matrix<V> &);
-
-        template<class U, class V>
-        friend auto operator-(const Matrix<U> &, const Matrix<V> &);
+//        template<class V, class U>
+//        friend auto operator*(const Matrix<V> &, const U &);
+//
+//        template<class U, class V>
+//        friend auto operator*(const U &, const Matrix<V> &);
+//
+//        template<class U, class V>
+//        friend auto operator*(const Matrix<U> &, const Matrix<V> &);
+//
+//        template<class U, class V>
+//        friend auto operator+(const Matrix<U> &, const Matrix<V> &);
+//
+//        template<class U, class V>
+//        friend auto operator-(const Matrix<U> &, const Matrix<V> &);
 
     private:
         // your private member variables here.
@@ -51,12 +51,15 @@ namespace sjtu {
             //assert(n <= 0 || m <= 0);
             if (n <= 0 || m <= 0) throw e;
             std::vector<std::vector<T> >().swap(_matrix);
+            _matrix.resize(n);
             for (int i = 0; i < n; i++) {
-                std::vector<T> p;
+//                std::vector<T> p;
+                _matrix[i].resize(m);
                 for (int j = 0; j < m; j++) {
-                    p.push_back(_init);
+//                    p.push_back(_init);
+                    _matrix[i][j] = _init;
                 }
-                _matrix.push_back(p);
+//                _matrix.push_back(p);
             }
             _row = n;
             _col = m;
@@ -64,26 +67,47 @@ namespace sjtu {
 
         explicit Matrix(std::pair<size_t, size_t> sz, T _init = T()) {
             std::invalid_argument e("length_error");
-            //assert(sz.first <= 0 || sz.second <= 0);
-            if (sz.first <= 0 || sz.second <= 0) throw e;
+            //assert(n <= 0 || m <= 0);
+            size_t n = sz.first;
+            size_t m = sz.second;
+            if (n <= 0 || m <= 0) throw e;
             std::vector<std::vector<T> >().swap(_matrix);
-            for (int i = 0; i < sz.first; i++) {
-                std::vector<T> p;
-                for (int j = 0; j < sz.second; j++) {
-                    p.push_back(_init);
+            _matrix.resize(n);
+            for (int i = 0; i < n; i++) {
+//                std::vector<T> p;
+                _matrix[i].resize(m);
+                for (int j = 0; j < m; j++) {
+//                    p.push_back(_init);
+                    _matrix[i][j] = _init;
                 }
-                _matrix.push_back(p);
+//                _matrix.push_back(p);
             }
+            _row = n;
+            _col = m;
+//            std::invalid_argument e("length_error");
+            //assert(sz.first <= 0 || sz.second <= 0);
+//            if (sz.first <= 0 || sz.second <= 0) throw e;
+//            std::vector<std::vector<T> >().swap(_matrix);
+//            for (int i = 0; i < sz.first; i++) {
+//                std::vector<T> p;
+//                for (int j = 0; j < sz.second; j++) {
+//                    p.push_back(_init);
+//                }
+//                _matrix.push_back(p);
+//            }
         }
 
         Matrix(const Matrix &o) {
             _row = o.rowLength(), _col = o.columnLength();
             std::vector<std::vector<T> >().swap(_matrix);
+            _matrix.resize(_row);
             for (int i = 0; i < _row; i++) {
-                std::vector<T> p;
+//                std::vector<T> p;
+
+                _matrix[i].resize(_col);
                 for (int j = 0; j < _col; j++)
-                    p.push_back(o(i, j));
-                _matrix.push_back(p);
+                    _matrix[i][j] = o(i, j);
+//                _matrix.push_back(p);
             }
         }
 
@@ -92,12 +116,15 @@ namespace sjtu {
             _row = o.rowLength();
             _col = o.columnLength();
             std::vector<std::vector<T> >().swap(_matrix);
+            _matrix.resize(_row);
             for (int i = 0; i < _row; i++) {
-                std::vector<T> p;
+                _matrix[i].resize(_col);
+//                std::vector<T> p;
                 for (int j = 0; j < _col; j++) {
-                    p.push_back(T(o(i, j)));
+                    _matrix[i][j] = T(o(i,j));
+//                    p.push_back(T(o(i, j)));
                 }
-                _matrix.push_back(p);
+//                _matrix.push_back(p);
             }
         }
 
@@ -549,7 +576,8 @@ namespace sjtu {
 //            std::vector<decltype(U() * V())> p;
             __matrix[i].resize(___col);
             for (size_t j = 0; j < ___col; j++)
-                __matrix[i][j] = mat._matrix[i][j] * x;
+                __matrix[i][j] = mat(i,j) * x;
+//                __matrix[i][j] = mat._matrix[i][j] * x;
 //            __matrix.push_back(p);
         }
         Matrix<decltype(V() * U())> ans(__matrix, mat.rowLength(), mat.columnLength());
@@ -576,7 +604,8 @@ namespace sjtu {
 //            std::vector<decltype(U() * V())> p;
             __matrix[i].resize(___col);
             for (size_t j = 0; j < ___col; j++)
-                __matrix[i][j] = x * mat._matrix[i][j];
+                __matrix[i][j] = x * mat(i,j);
+//                __matrix[i][j] = x * mat._matrix[i][j];
 //            __matrix.push_back(p);
         }
         Matrix<decltype(V() * U())> ans(__matrix, mat.rowLength(), mat.columnLength());
@@ -608,7 +637,8 @@ namespace sjtu {
                 for (int j = 0; j < b.columnLength(); j++) {
                     decltype(V() * U()) sum = 0;
                     for (int k = 0; k < a.columnLength(); k++) {
-                        sum += a._matrix[i][k] * b._matrix[k][j];
+                        sum += a(i,k)*b(k,j);
+//                        sum += a._matrix[i][k] * b._matrix[k][j];
                     }
                     d.push_back(sum);
                 }
@@ -628,10 +658,13 @@ namespace sjtu {
         } else {
             std::vector<std::vector<decltype(U() + V())> > __matrix;
             Matrix<decltype(U() + V())> fuckit(a.rowLength(), a.columnLength());
-            for (int i = 0; i < a.rowLength(); i++) {
+            size_t ___row = a.rowLength();
+            size_t ___col = a.columnLength();
+            for (size_t i = 0; i < ___row; i++) {
 //                std::vector<decltype(U() + V())> p;
-                for (int j = 0; j < a.columnLength(); j++) {
-                    fuckit._matrix[i][j] = a._matrix[i][j] + b._matrix[i][j];
+                for (size_t j = 0; j < ___col; j++) {
+                    fuckit(i,j) = a(i,j) + b(i,j);
+//                    fuckit._matrix[i][j] = a._matrix[i][j] + b._matrix[i][j];
                 }
 //                __matrix.push_back(p);
             }
@@ -647,12 +680,15 @@ namespace sjtu {
             std::invalid_argument e("length_error");
             throw e;
         } else {
-            std::vector<std::vector<decltype(U() + V())> > __matrix;
-            Matrix<decltype(U() + V())> fuckit(a.rowLength(), a.columnLength());
-            for (int i = 0; i < a.rowLength(); i++) {
+            std::vector<std::vector<decltype(U() - V())> > __matrix;
+            Matrix<decltype(U() - V())> fuckit(a.rowLength(), a.columnLength());
+            size_t ___row = a.rowLength();
+            size_t ___col = a.columnLength();
+            for (size_t i = 0; i < ___row; i++) {
 //                std::vector<decltype(U() + V())> p;
-                for (int j = 0; j < a.columnLength(); j++) {
-                    fuckit._matrix[i][j] = a._matrix[i][j] - b._matrix[i][j];
+                for (size_t j = 0; j < ___col; j++) {
+                    fuckit(i,j) = a(i,j) - b(i,j);
+//                    fuckit._matrix[i][j] = a._matrix[i][j] - b._matrix[i][j];
                 }
 //                __matrix.push_back(p);
             }
