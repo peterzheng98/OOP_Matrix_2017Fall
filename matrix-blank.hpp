@@ -9,43 +9,37 @@
 #include <stdexcept>
 #include <iostream>
 #include <cassert>
-
+#include <ctime>
+#pragma GCC optimize("O3")
 using std::size_t;
 
 namespace sjtu {
 
     template<class T>
     class Matrix {
-//        template<class V, class U>
-//        friend auto operator*(const Matrix<V> &, const U &);
-//
-//        template<class U, class V>
-//        friend auto operator*(const U &, const Matrix<V> &);
-//
-//        template<class U, class V>
-//        friend auto operator*(const Matrix<U> &, const Matrix<V> &);
-//
-//        template<class U, class V>
-//        friend auto operator+(const Matrix<U> &, const Matrix<V> &);
-//
-//        template<class U, class V>
-//        friend auto operator-(const Matrix<U> &, const Matrix<V> &);
-
+        template<class V, class U>
+        friend inline auto operator*(const Matrix<V> &mat, const U &x) -> Matrix<decltype(V() * U())> ;
+        template<class U, class V>
+        friend inline auto operator*(const U &x, const Matrix<V> &mat) -> Matrix<decltype(U() * V())>;
+        template<class U, class V>
+        friend inline auto operator*(const Matrix<U> &a, const Matrix<V> &b) -> Matrix<decltype(U() * V())>;
+        template<class U, class V>
+        friend inline auto operator+(const Matrix<U> &a, const Matrix<V> &b) -> Matrix<decltype(U() + V())>;
+        template<class U, class V>
+        friend inline auto operator-(const Matrix<U> &a, const Matrix<V> &b) -> Matrix<decltype(U() - V())>;
     private:
         // your private member variables here.
         std::vector<std::vector<T> > _matrix;
+//        T __matrix[500][500];
         size_t _row, _col;
     public:
         Matrix() = default;
-
         Matrix(std::vector<std::vector<T> > __matrix, unsigned int __row, unsigned int __col) {
             _matrix = __matrix, _row = __row, _col = __col;
         }
-
         Matrix(std::vector<std::vector<T> > __matrix, size_t __row, size_t __col) {
             _matrix = __matrix, _row = __row, _col = __col;
         }
-
         Matrix(size_t n, size_t m, T _init = T()) {
             std::invalid_argument e("length_error");
             //assert(n <= 0 || m <= 0);
@@ -64,7 +58,6 @@ namespace sjtu {
             _row = n;
             _col = m;
         }
-
         explicit Matrix(std::pair<size_t, size_t> sz, T _init = T()) {
             std::invalid_argument e("length_error");
             //assert(n <= 0 || m <= 0);
@@ -96,7 +89,6 @@ namespace sjtu {
 //                _matrix.push_back(p);
 //            }
         }
-
         Matrix(const Matrix &o) {
             _row = o.rowLength(), _col = o.columnLength();
             std::vector<std::vector<T> >().swap(_matrix);
@@ -110,7 +102,6 @@ namespace sjtu {
 //                _matrix.push_back(p);
             }
         }
-
         template<class U>
         Matrix(const Matrix<U> &o) {
             _row = o.rowLength();
@@ -127,7 +118,6 @@ namespace sjtu {
 //                _matrix.push_back(p);
             }
         }
-
         Matrix &operator=(const Matrix &o) {
             if (&o != this) {
                 this->_col = o.columnLength();
@@ -143,7 +133,6 @@ namespace sjtu {
             }
             return *this;
         }
-
         template<class U>
         Matrix &operator=(const Matrix<U> &o) {
             _row = o.rowLength(), _col = o.columnLength();
@@ -158,7 +147,6 @@ namespace sjtu {
             }
             return *this;
         }
-
         Matrix(Matrix &&o) noexcept {
             _row = o.rowLength(), _col = o.columnLength();
             std::vector<std::vector<T> >().swap(_matrix);
@@ -170,7 +158,6 @@ namespace sjtu {
                 _matrix.push_back(p);
             }
         }
-
         Matrix &operator=(Matrix &&o) noexcept {
             _row = o.rowLength(), _col = o.columnLength();
             std::vector<std::vector<T> >().swap(_matrix);
@@ -182,11 +169,9 @@ namespace sjtu {
             }
             return *this;
         }
-
         ~Matrix() {
             //std::vector<std::vector<T> >().swap(_matrix);
         }
-
         Matrix(std::initializer_list<std::initializer_list<T>> il) {
             std::invalid_argument e("length_error");
             //assert(il.size() <= 0);
@@ -205,16 +190,13 @@ namespace sjtu {
             }
             _col = __col, _row = __row;
         }
-
     public:
         size_t rowLength() const {
             return _matrix.size();
         }
-
         size_t columnLength() const {
             return _matrix.size() > 0 ? _matrix[0].size() : 0;
         }
-
         void resize(size_t _n, size_t _m, T _init = T()) {
             std::invalid_argument e("length_error");
             //assert(_n <= 0 || _m <= 0);
@@ -231,7 +213,6 @@ namespace sjtu {
             }
             _matrix = __matrix;
         }
-
         void resize(std::pair<size_t, size_t> sz, T _init = T()) {
             std::invalid_argument e("length_error");
             //assert(sz.first<=0||sz.second<=0);
@@ -248,24 +229,19 @@ namespace sjtu {
             }
             _matrix = __matrix;
         }
-
         std::pair<size_t, size_t> size() const {
             return std::make_pair(_matrix.size(), _matrix.size() > 0 ? _matrix[0].size() : 0);
         };
-
         void clear() {
             std::vector<std::vector<T> >().swap(_matrix);
         }
-
     public:
         const T &operator()(size_t i, size_t j) const {
             return _matrix.at(i).at(j);
         }
-
         T &operator()(size_t i, size_t j) {
             return _matrix.at(i).at(j);
         }
-
         Matrix<T> row(size_t _i) const {
             std::vector<std::vector<T> > __matrix;
             std::vector<T> __row;
@@ -279,7 +255,6 @@ namespace sjtu {
             ___matrix._matrix = __matrix;*/
             return ___matrix;
         }
-
         Matrix<T> column(size_t _i) const {
             std::vector<std::vector<T> > __matrix;
             for (int i = 0; i < _row; i++) {
@@ -293,8 +268,6 @@ namespace sjtu {
             ___matrix._matrix = __matrix;*/
             return ___matrix;
         }
-
-
     public:
         template<class U>
         bool operator==(const Matrix<U> &o) const {
@@ -306,12 +279,10 @@ namespace sjtu {
             }
             return true;
         }
-
         template<class U>
         bool operator!=(const Matrix<U> &o) const {
             return !(o == (*this));
         }
-
         Matrix operator-() const {
             std::vector<std::vector<T> > __matrix;
             for (int i = 0; i < _row; i++) {
@@ -324,7 +295,6 @@ namespace sjtu {
             Matrix<T> ans(__matrix, _row, _col);
             return ans;
         }
-
         template<class U>
         Matrix &operator+=(const Matrix<U> &o) {
             //assert(_row == o._row && _col == o._col);
@@ -346,7 +316,6 @@ namespace sjtu {
                 throw e;
             }
         }
-
         template<class U>
         Matrix &operator-=(const Matrix<U> &o) {
             //assert(_row == o._row && _col == o._col);
@@ -368,7 +337,6 @@ namespace sjtu {
                 throw e;
             }
         }
-
         template<class U>
         Matrix &operator*=(const U &x) {
             std::vector<std::vector<decltype(T() * U())> > __matrix;
@@ -383,8 +351,6 @@ namespace sjtu {
             *this = fuck_oop;
             return *this;
         }
-
-
         Matrix tran() const {
             std::invalid_argument e("length_error");
             if (_col <= 0 || _row <= 0)
@@ -411,7 +377,6 @@ namespace sjtu {
             }
 
         }
-
         void print() const {
             for (int i = 0; i < _row; i++) {
                 for (int j = 0; j < _col; j++)
@@ -419,7 +384,6 @@ namespace sjtu {
                 printf("\n");
             }
         }
-
     public: // iterator
         class iterator {
         public:
@@ -543,17 +507,14 @@ namespace sjtu {
                 return !(o._curI == _curI && o._p == _p);
             }
         };
-
         iterator begin() {
 //            return &_matrix[start.first][start.second];
             return iterator(this, 0);
         }
-
         iterator end() {
 //            return &(_matrix[finish.first][finish.second]+1);
             return iterator(this, _col * _row);
         }
-
         std::pair<iterator, iterator> subMatrix(std::pair<size_t, size_t> l, std::pair<size_t, size_t> r) {
             return std::make_pair(iterator(this, (l.first * this->columnLength() + l.second), true, r.second, l.second,
                                            this->columnLength()),
@@ -561,26 +522,25 @@ namespace sjtu {
                                            this->columnLength()));
         }
     };
-
 }
 
 //
 namespace sjtu {
     template<class V, class U>
-    auto operator*(const Matrix<V> &mat, const U &x) {
+    auto inline operator*(const Matrix<V> &mat, const U &x)->Matrix<decltype(V() * U())> {
         size_t ___row = mat.rowLength(), ___col = mat.columnLength();
         std::vector<std::vector<decltype(V() * U())> > __matrix;
-
-        __matrix.resize(___row);
+        Matrix<decltype(V() * U())> ans(__matrix, mat.rowLength(), mat.columnLength());
+        ans._matrix.resize(___row);
         for (size_t i = 0; i < ___row; i++) {
 //            std::vector<decltype(U() * V())> p;
-            __matrix[i].resize(___col);
+            ans._matrix[i].resize(___col);
             for (size_t j = 0; j < ___col; j++)
-                __matrix[i][j] = mat(i,j) * x;
-//                __matrix[i][j] = mat._matrix[i][j] * x;
+//                __matrix[i][j] = mat(i,j) * x;
+                ans._matrix[i][j] = mat._matrix[i][j] * x;
 //            __matrix.push_back(p);
         }
-        Matrix<decltype(V() * U())> ans(__matrix, mat.rowLength(), mat.columnLength());
+//        Matrix<decltype(V() * U())> ans(__matrix, mat.rowLength(), mat.columnLength());
         return ans;
         /*Matrix<decltype(V() * U())> ans(mat.rowLength(), mat.columnLength());
 //        std::vector<std::vector<decltype(V() * U())> > __matrix;
@@ -595,20 +555,21 @@ namespace sjtu {
     }
 
     template<class U, class V>
-    auto operator*(const U &x, const Matrix<V> &mat) {
+    auto inline operator*(const U &x, const Matrix<V> &mat) -> Matrix<decltype(U() * V())> {
 
         std::vector<std::vector<decltype(U() * V())> > __matrix;
         size_t ___row = mat.rowLength(), ___col = mat.columnLength();
         __matrix.resize(___row);
+        Matrix<decltype(V() * U())> ans(__matrix, mat.rowLength(), mat.columnLength());
         for (size_t i = 0; i < ___row; i++) {
 //            std::vector<decltype(U() * V())> p;
-            __matrix[i].resize(___col);
+            ans._matrix[i].resize(___col);
             for (size_t j = 0; j < ___col; j++)
-                __matrix[i][j] = x * mat(i,j);
-//                __matrix[i][j] = x * mat._matrix[i][j];
+//                __matrix[i][j] = x * mat(i,j);
+                ans._matrix[i][j] = x * mat._matrix[i][j];
 //            __matrix.push_back(p);
         }
-        Matrix<decltype(V() * U())> ans(__matrix, mat.rowLength(), mat.columnLength());
+//        Matrix<decltype(V() * U())> ans(__matrix, mat.rowLength(), mat.columnLength());
         return ans;
 
 //        std::vector<std::vector<decltype(U() * V())> > __matrix;
@@ -620,12 +581,9 @@ namespace sjtu {
 //        }
 //        Matrix<decltype(U() * V())> ans(__matrix, mat.rowLength(), mat.columnLength());
 //        return ans;
-
-
     }
-
     template<class U, class V>
-    auto operator*(const Matrix<U> &a, const Matrix<V> &b) {
+    auto inline operator*(const Matrix<U> &a, const Matrix<V> &b)->Matrix<decltype(U() * V())>{
         std::invalid_argument e("length_error");
         if (a.columnLength() != b.rowLength() || a.columnLength() < 0 || a.rowLength() < 0 || b.rowLength() < 0 ||
             b.columnLength() < 0) {
@@ -637,8 +595,8 @@ namespace sjtu {
                 for (int j = 0; j < b.columnLength(); j++) {
                     decltype(V() * U()) sum = 0;
                     for (int k = 0; k < a.columnLength(); k++) {
-                        sum += a(i,k)*b(k,j);
-//                        sum += a._matrix[i][k] * b._matrix[k][j];
+//                        sum += a(i,k)*b(k,j);
+                        sum += a._matrix[i][k] * b._matrix[k][j];
                     }
                     d.push_back(sum);
                 }
@@ -648,9 +606,10 @@ namespace sjtu {
             return fuck_oop;
         }
     }
-
     template<class U, class V>
-    auto operator+(const Matrix<U> &a, const Matrix<V> &b) {
+    auto inline operator+(const Matrix<U> &a, const Matrix<V> &b)->Matrix<decltype(U() + V())> {
+        static int count = 0;
+        const clock_t begin_time = clock();
         if (a.columnLength() != b.columnLength() || a.rowLength() != b.rowLength() || a.rowLength() <= 0 ||
             a.columnLength() <= 0) {
             std::invalid_argument e("length_error");
@@ -663,8 +622,10 @@ namespace sjtu {
             for (size_t i = 0; i < ___row; i++) {
 //                std::vector<decltype(U() + V())> p;
                 for (size_t j = 0; j < ___col; j++) {
-                    fuckit(i,j) = a(i,j) + b(i,j);
-//                    fuckit._matrix[i][j] = a._matrix[i][j] + b._matrix[i][j];
+//                    fuckit(i,j) = a(i,j) + b(i,j);
+                    fuckit._matrix[i][j] = a._matrix[i][j] + b._matrix[i][j];
+                    count++;
+//                    std::cout << "RunTimes: " << count << "  CurTimes(ms):" << clock () - begin_time  /  CLOCKS_PER_SEC << std::endl;
                 }
 //                __matrix.push_back(p);
             }
@@ -672,9 +633,8 @@ namespace sjtu {
             return fuckit;
         }
     }
-
     template<class U, class V>
-    auto operator-(const Matrix<U> &a, const Matrix<V> &b) {
+    auto inline operator-(const Matrix<U> &a, const Matrix<V> &b)->Matrix<decltype(U() - V())> {
         if (a.columnLength() != b.columnLength() || a.rowLength() != b.rowLength() || a.rowLength() <= 0 ||
             a.columnLength() <= 0) {
             std::invalid_argument e("length_error");
@@ -687,12 +647,11 @@ namespace sjtu {
             for (size_t i = 0; i < ___row; i++) {
 //                std::vector<decltype(U() + V())> p;
                 for (size_t j = 0; j < ___col; j++) {
-                    fuckit(i,j) = a(i,j) - b(i,j);
-//                    fuckit._matrix[i][j] = a._matrix[i][j] - b._matrix[i][j];
+//                    fuckit(i,j) = a(i,j) - b(i,j);
+                    fuckit._matrix[i][j] = a._matrix[i][j] - b._matrix[i][j];
                 }
 //                __matrix.push_back(p);
             }
-
             return fuckit;
         }
     }
