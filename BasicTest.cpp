@@ -4,7 +4,7 @@
 #include <functional>
 #include <vector>
 #include <unistd.h>
-#include "matrix.hpp"
+#include "matrix-blank.hpp"
 
 //#define POLICY_ITERATOR
 
@@ -29,6 +29,7 @@ std::pair<bool, std::string> testConst()
 	const Matrix<int> std_row0 = {{ 1, 2 }};
 	const Matrix<int> std_col0 = {{ 1 },
 								  { 3 }};
+    a.tran().print();
 	if (a.tran() != std_tran)
 		WA("tran");
 	if (a.row(0) != std_row0)
@@ -106,8 +107,8 @@ std::pair<bool, std::string> testCtorAssignment()
 	}
 
 	// copy ctor & assignment
-	try
-	{
+//	try
+//	{
 		Matrix<double> a = doubleIl;
 		Matrix<int> b(a);
 		if (!checkMat(b))
@@ -116,10 +117,10 @@ std::pair<bool, std::string> testCtorAssignment()
 		if (!checkMat(b))
 			return WA("copy ctor");
 		a = b;
-	} catch (...)
-	{
-		return RE("copy ctor or assignment");
-	}
+//	} catch (...)
+//	{
+//		return RE("copy ctor or assignment");
+//	}
 	return { true, "Congratulation!" };
 };
 
@@ -327,6 +328,7 @@ std::pair<bool, std::string> testIterator()
 		int k = 0;
 		for (auto &&item : a)
 		{
+//            std::cout << "Run!" << std::endl;
 			if (item != k++)
 				return WA("begin, end, ++, *");
 		}
@@ -344,7 +346,10 @@ std::pair<bool, std::string> testIterator()
 		int k = 0;
 		for (auto iter = beg; iter != end; ++iter)
 		{
-			if (ans[k++] != *iter)
+//            std::cout << "subMatrix Run!" << std:: endl;
+//            int p = k++;
+//            std::cout << ans[p] << "  " << *iter << std::endl;
+            if (ans[k++] != *iter)
 				return WA("subMatrix");
 		}
 	} catch (...)
