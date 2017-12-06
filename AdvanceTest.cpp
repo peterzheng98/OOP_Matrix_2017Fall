@@ -1,5 +1,5 @@
 #include "testint.hpp"
-#include "matrix-blank.hpp"
+#include "matrix3.hpp"
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -48,20 +48,26 @@ std::pair<bool, std::string> resizeTest()
 		for (size_t j = 0; j < M; j++)
 			a(i, j) = cnt++;
 	const int N1 = 300, M1 = 300;
-
+//    printf("\n");
+//    a.print();
+//    printf("\n");
+//    a.print();
 	a.resize(N1, M1);
 	cnt = 0;
 	for (size_t i = 0; i < N1; i++)
 		for (size_t j = 0; j < M1; j++, cnt++)
 			if (a(i, j) != (cnt < N * M ? cnt : 0)) return WA("resize");
-
+//    return WA("StopFlag");
 	const int N2 = 500, M2 = 100;
 	a.resize(std::make_pair(size_t(N2), size_t(M2)));
 	cnt = 0;
+//    printf("\n");
+//    a.print();
+//    printf("a.size=<%d,%d>\n",a.size().first,a.size().second);
 	for (size_t i = 0; i < N2; i++)
 		for (size_t j = 0; j < M2; j++, cnt++)
 			if (a(i, j) != cnt) return WA("resize");
-
+//    return WA("StopFlag");
 	Matrix<testint> b(N, M);
 	Matrix<int> judgecode(1, N * M);
 	for (size_t i = 0; i < N; i++)
@@ -115,63 +121,63 @@ std::pair<bool, std::string> exceptionTest()
 	try
 	{
 		a + b;
-	} catch (...) { cnt++; }
+	} catch (...) { cnt++; std::cout << __LINE__ << std::endl; }
 
 	try
 	{
 		a += b;
-	} catch (...) { cnt++; }
+	} catch (...) { cnt++; std::cout << __LINE__ << std::endl;}
 
 	try
 	{
 		a -= b;
-	} catch (...) { cnt++; }
+	} catch (...) { cnt++; std::cout << __LINE__ << std::endl;}
 
 	try
 	{
 		a - b;
-	} catch (...) { cnt++; }
+	} catch (...) { cnt++; std::cout << __LINE__ << std::endl;}
 
 	try
 	{
 		a * c;
-	} catch (...) { cnt++; }
+	} catch (...) { cnt++; std::cout << __LINE__ << std::endl;}
 
 	try
 	{
 		a(-1, -1);
-	} catch (...) { cnt++; }
+	} catch (...) { cnt++; std::cout << __LINE__ << std::endl;}
 
 	try
 	{
 		a(N, M);
-	} catch (...) { cnt++; }
+	} catch (...) { cnt++; std::cout << __LINE__ << std::endl;}
 
 	try
 	{
 		a.row(N);
-	} catch (...) { cnt++; }
+	} catch (...) { cnt++; std::cout << __LINE__ << std::endl;}
 
 	try
 	{
 		a.row(-1);
-	} catch (...) { cnt++; }
+	} catch (...) { cnt++; std::cout << __LINE__ << std::endl;}
 
 	try
 	{
 		a.column(M);
-	} catch (...) { cnt++; }
+	} catch (...) { cnt++; std::cout << __LINE__ << std::endl;}
 
 	try
 	{
 		a.column(-1);
-	} catch (...) { cnt++; }
+	} catch (...) { cnt++; std::cout << __LINE__ << std::endl;}
 
 	try
 	{
 		Matrix<int> t = {{ 0, 1 },
 						 { 0 }};
-	} catch (...) { cnt++; }
+	} catch (...) { cnt++; std::cout << __LINE__ << std::endl;}
 
 	if (cnt != 12) return WA("Caught " + toString(cnt) + " exceptions");
 	return { true, "Congratulation" };

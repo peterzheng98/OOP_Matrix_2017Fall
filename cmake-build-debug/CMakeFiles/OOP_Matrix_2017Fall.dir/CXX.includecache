@@ -6,23 +6,19 @@
 
 #IncludeRegexTransform: 
 
-/Users/peterzheng/GitHubProjects/OOP_Matrix_2017Fall/BasicTest.cpp
+/Users/peterzheng/GitHubProjects/OOP_Matrix_2017Fall/AdvanceTest.cpp
+testint.hpp
+/Users/peterzheng/GitHubProjects/OOP_Matrix_2017Fall/testint.hpp
+matrix3.hpp
+/Users/peterzheng/GitHubProjects/OOP_Matrix_2017Fall/matrix3.hpp
 iostream
 -
-utility
+sstream
 -
 string
 -
-functional
--
-vector
--
-unistd.h
--
-matrix-blank.hpp
-/Users/peterzheng/GitHubProjects/OOP_Matrix_2017Fall/matrix-blank.hpp
 
-/Users/peterzheng/GitHubProjects/OOP_Matrix_2017Fall/matrix-blank.hpp
+/Users/peterzheng/GitHubProjects/OOP_Matrix_2017Fall/matrix3.hpp
 cstddef
 -
 initializer_list
@@ -37,8 +33,10 @@ stdexcept
 -
 iostream
 -
-cassert
+
+/Users/peterzheng/GitHubProjects/OOP_Matrix_2017Fall/testint.hpp
+unistd.h
 -
-ctime
+cstdlib
 -
 

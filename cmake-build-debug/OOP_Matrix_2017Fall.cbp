@@ -82,10 +82,10 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/peterzheng/GitHubProjects/OOP_Matrix_2017Fall/BasicTest.cpp">
+		<Unit filename="/Users/peterzheng/GitHubProjects/OOP_Matrix_2017Fall/AdvanceTest.cpp">
 			<Option target="OOP_Matrix_2017Fall"/>
 		</Unit>
-		<Unit filename="/Users/peterzheng/GitHubProjects/OOP_Matrix_2017Fall/matrix-blank.hpp">
+		<Unit filename="/Users/peterzheng/GitHubProjects/OOP_Matrix_2017Fall/matrix3.hpp">
 			<Option target="OOP_Matrix_2017Fall"/>
 		</Unit>
 		<Unit filename="/Users/peterzheng/GitHubProjects/OOP_Matrix_2017Fall/CMakeLists.txt">
